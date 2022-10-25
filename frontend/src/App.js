@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 import { Header, Footer } from './components';
-import { HomeScreen } from './screens';
+import { HomeScreen, ProductScreen } from './screens';
 
 const App = () => {
 	return (
@@ -12,6 +12,7 @@ const App = () => {
 				<Container>
 					<Routes>
 						<Route path="/" exact element={<HomeScreen />} />
+						<Route path="/product/:id" element={<ProductScreen />} />
 					</Routes>
 				</Container>
 			</main>
