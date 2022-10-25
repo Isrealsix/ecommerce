@@ -1,11 +1,14 @@
+import { Container } from 'react-bootstrap';
 import { Header, Footer } from './components';
 
 const App = () => {
 	return (
 		<>
 			<Header />
-			<main>
-				<h1>Welcome to Eazy-Shop</h1>
+			<main className='py-3'>
+				<Container>
+					<h1>Welcome to Eazy-Shop</h1>
+				</Container>
 			</main>
 			<Footer />
 		</>
