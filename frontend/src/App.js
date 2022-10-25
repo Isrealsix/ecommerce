@@ -1,9 +1,15 @@
+import { Header, Footer } from './components';
+
 const App = () => {
-  return (
-    <>
-      Welcome to Eazy-Shop
-    </>
-  );
-}
+	return (
+		<>
+			<Header />
+			<main>
+				<h1>Welcome to Eazy-Shop</h1>
+			</main>
+			<Footer />
+		</>
+	);
+};
 
 export default App;
