@@ -4,11 +4,16 @@
   "description": "MERN shopping cart ",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server"
+    "start": "nodemon backend/server",
+		"server": "nodemon backend/server",
+		"client": "npm start --prefix frontend"
   },
   "author": "@Isrealsix",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0"
   }
 }
