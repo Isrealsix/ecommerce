@@ -4,7 +4,7 @@
   "description": "MERN shopping cart ",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server"
+    "start": "nodemon backend/server"
   },
   "author": "@Isrealsix",
   "license": "ISC",
