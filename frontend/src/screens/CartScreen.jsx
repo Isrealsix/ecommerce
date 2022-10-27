@@ -25,8 +25,8 @@ const CartScreen = () => {
 		if (productId) dispatch(addToCart(productId, qty));
 	}, [dispatch, productId, qty]);
 
-	const removeFromCartHandler = (id) => {
-		console.log('remove')
+	const removeFromCartHandler = id => {
+		console.log('remove');
 	};
 
 	return (
@@ -82,8 +82,19 @@ const CartScreen = () => {
 				)}
 			</Col>
 
-			<Col md={2}></Col>
-			<Col md={2}></Col>
+			<Col md={4}>
+				<Card>
+					<ListGroup variant="flush">
+						<ListGroup.Item>
+							<h2>
+								Subtotal ({cartItems.reduce((acc, curr) => acc + curr.qty, 0)})
+								items
+							</h2>
+							${cartItems.reduce((acc, curr) => acc + curr.qty * curr.price, 0).toFixed(2)}
+						</ListGroup.Item>
+					</ListGroup>
+				</Card>
+			</Col>
 		</Row>
 	);
 };
