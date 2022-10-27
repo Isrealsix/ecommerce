@@ -1,1 +1,1 @@
-export { productListReducer } from './productReducers';
+export { productListReducer, productDetailsReducer } from './productReducers';
