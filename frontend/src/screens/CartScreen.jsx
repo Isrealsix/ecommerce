@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useParams, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../actions';
 import {
@@ -18,6 +18,7 @@ const CartScreen = () => {
 	const location = useLocation();
 	const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 	const dispatch = useDispatch();
+	const navigate = useNavigate()
 	const cart = useSelector(state => state.cart);
 	const { cartItems } = cart;
 
@@ -27,6 +28,11 @@ const CartScreen = () => {
 
 	const removeFromCartHandler = id => {
 		console.log('remove');
+	};
+
+	const checkOutHandler = () => {
+		navigate('/login?redirect=shipping')
+		console.log('checkout');
 	};
 
 	return (
@@ -90,7 +96,20 @@ const CartScreen = () => {
 								Subtotal ({cartItems.reduce((acc, curr) => acc + curr.qty, 0)})
 								items
 							</h2>
-							${cartItems.reduce((acc, curr) => acc + curr.qty * curr.price, 0).toFixed(2)}
+							$
+							{cartItems
+								.reduce((acc, curr) => acc + curr.qty * curr.price, 0)
+								.toFixed(2)}
+						</ListGroup.Item>
+						<ListGroup.Item>
+							<Button
+								type="button"
+								className="btn-block"
+								disabled={cartItems.length === 0}
+								onClick={checkOutHandler}
+							>
+								Proceed To Checkout
+							</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Card>
