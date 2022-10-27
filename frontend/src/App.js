@@ -13,7 +13,7 @@ const App = () => {
 					<Routes>
 						<Route path="/" exact element={<HomeScreen />} />
 						<Route path="/product/:id" element={<ProductScreen />} />
-						{ /* <Route path="/cart/" element={<CartScreen />} /> */ }
+						{ <Route path="/cart/" element={<CartScreen />} /> }
 						<Route path="/cart/:id" element={<CartScreen />} />
 					</Routes>
 				</Container>
