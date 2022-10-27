@@ -1,0 +1,1 @@
+export { listProducts } from './productActions';
