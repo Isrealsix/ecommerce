@@ -7,6 +7,8 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 const app = express();
 
+app.use(express.json());
+
 dotenv.config();
 connectDB();
 
