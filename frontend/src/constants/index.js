@@ -8,3 +8,10 @@ export {
 } from './productConstants';
 
 export { CART_ADD_ITEM, CART_REMOVE_ITEM } from './cartConstants';
+
+export {
+	USER_LOGIN_REQUEST,
+	USER_LOGIN_SUCCESS,
+	USER_LOGIN_FAIL,
+	USER_LOGOUT
+} from './userConstants';
