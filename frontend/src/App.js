@@ -2,7 +2,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 import { Header, Footer } from './components';
-import { HomeScreen, ProductScreen, CartScreen, LoginScreen, RegisterScreen } from './screens';
+import {
+	HomeScreen,
+	ProductScreen,
+	CartScreen,
+	LoginScreen,
+	RegisterScreen,
+} from './screens';
 
 const App = () => {
 	return (
