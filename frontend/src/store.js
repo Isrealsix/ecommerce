@@ -16,14 +16,14 @@ const reducer = combineReducers({
 	cart: cartReducer,
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
-	userDetails: userDetailsReducer
+	userDetails: userDetailsReducer,
 });
 
 const cartItemsLS = localStorage.getItem('cartItems');
 const cartItemsFromStorage = cartItemsLS ? JSON.parse(cartItemsLS) : [];
 
 const userInfoLS = localStorage.getItem('userInfo');
-const userInfoFromStorage = userInfoLS ? JSON.parse(cartItemsLS) : null;
+const userInfoFromStorage = userInfoLS ? JSON.parse(userInfoLS) : null;
 
 const initialState = {
 	cart: { cartItems: cartItemsFromStorage },
