@@ -26,9 +26,9 @@ const ProfileScreen = () => {
 		else {
 			if (!user.name) dispatch(getUserDetails('profile'));
 			else
-				setField(state => ({ ...state, name: state.name, email: state.email }));
+				setField(state => ({ ...state, name: user.name, email: user.email }));
 		}
-	}, [navigate, userInfo, dispatch, user?.name]);
+	}, [navigate, userInfo, dispatch, user]);
 
 	const submitHandler = ev => {
 		ev.preventDefault();
