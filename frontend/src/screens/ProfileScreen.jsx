@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader } from '../components';
-import { getUserDetails } from '../actions';
+import { getUserDetails, updateUserProfile } from '../actions';
 
 const ProfileScreen = () => {
 	const [field, setField] = useState({
@@ -21,6 +21,9 @@ const ProfileScreen = () => {
 	const { loading, error, user } = userDetails;
 	const { userInfo } = userLogin;
 
+	const userUpdateProfile = useSelector(state => state.userUpdateProfile);
+	const { success } = userUpdateProfile;
+
 	useEffect(() => {
 		if (!userInfo) navigate('/login');
 		else {
@@ -35,7 +38,12 @@ const ProfileScreen = () => {
 		if (field.password !== field.confirmPassword) {
 			setField(state => ({ ...state, message: 'Passwords do not match' }));
 		} else {
-			// DISPATCH update handler
+			dispatch((updateUserProfile({
+				id: user._id,
+				name: field.name,
+				email: field.email,
+				password: field.password,
+			})))
 		}
 	};
 
@@ -50,6 +58,7 @@ const ProfileScreen = () => {
 				<h2>User Profile</h2>
 				{field.message && <Message variant="danger">{field.message}</Message>}
 				{error && <Message variant="danger">{error}</Message>}
+				{success && <Message variant="success">Profile Updated!</Message>}
 				{loading && <Loader />}
 				<Form onSubmit={submitHandler}>
 					<Form.Group controlId="name">
