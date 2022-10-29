@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader, FormContainer } from '../components';
@@ -8,7 +8,14 @@ import { login } from '../actions';
 const LoginScreen = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const location = useLocation();
 
+	const redirect = location.search ? location.search.split('=')[1] : '/';
+
+	const submitHandler = ev => {
+		ev.preventDefault();
+		// DISPATCH LOGIN
+	}
 	return (
 		<FormContainer>
 			<h1>Sign In</h1>

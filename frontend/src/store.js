@@ -18,7 +18,7 @@ const userInfoFromStorage = userInfoLS ? JSON.parse(cartItemsLS) : null;
 
 const initialState = {
 	cart: { cartItems: cartItemsFromStorage },
-	userLogon: { userInfo: userInfoFromStorage}
+	userLogin: { userInfo: userInfoFromStorage}
 };
 const middleware = [thunk]
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
