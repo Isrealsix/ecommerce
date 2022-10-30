@@ -32,7 +32,7 @@ const shippingAddressLS = localStorage.getItem('shippingAddress');
 const shippingAddressFromStorage = shippingAddressLS ? JSON.parse(shippingAddressLS) : {};
 
 const initialState = {
-	cart: { cartItems: cartItemsFromStorage },
+	cart: { cartItems: cartItemsFromStorage, shippingAddress: shippingAddressFromStorage },
 	userLogin: { userInfo: userInfoFromStorage },
 };
 const middleware = [thunk];

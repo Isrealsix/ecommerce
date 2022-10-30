@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FormContainer } from '../components';
 
 const ShippingScreen = () => {
-	const [shippingAddress, setShippingAddress] = useState({
-		address: '',
-		city: '',
-		postalCode: '',
-		country: '',
+	const cart = useSelector(state => state.cart);
+	const { shippingAddress } = cart;
+
+	const [shippingAddressInfo, setShippingAddressInfo] = useState({
+		address: shippingAddress.address,
+		city: shippingAddress.city,
+		postalCode: shippingAddress.postalCode,
+		country: shippingAddress.country,
 	});
 
 	const submitHandler = ev => {
@@ -17,7 +20,7 @@ const ShippingScreen = () => {
 	};
 	const onUpdateField = ev => {
 		const key = ev.target.dataset.key;
-		setShippingAddress(state => ({ ...state, [key]: ev.target.value }));
+		setShippingAddressInfo(state => ({ ...state, [key]: ev.target.value }));
 	};
 	return (
 		<FormContainer>
@@ -30,7 +33,7 @@ const ShippingScreen = () => {
 						data-key="address"
 						placeholder="Enter address"
 						required
-						value={shippingAddress.address}
+						value={shippingAddressInfo.address}
 						onChange={onUpdateField}
 					></Form.Control>
 				</Form.Group>
@@ -42,7 +45,7 @@ const ShippingScreen = () => {
 						data-key="city"
 						placeholder="Enter city"
 						required
-						value={shippingAddress.city}
+						value={shippingAddressInfo.city}
 						onChange={onUpdateField}
 					></Form.Control>
 				</Form.Group>
@@ -55,7 +58,7 @@ const ShippingScreen = () => {
 						data-key="postalCode"
 						placeholder="Enter postal code"
 						required
-						value={shippingAddress.postalCode}
+						value={shippingAddressInfo.postalCode}
 						onChange={onUpdateField}
 					></Form.Control>
 				</Form.Group>
@@ -68,7 +71,7 @@ const ShippingScreen = () => {
 						data-key="country"
 						placeholder="Enter country"
 						required
-						value={shippingAddress.country}
+						value={shippingAddressInfo.country}
 						onChange={onUpdateField}
 					></Form.Control>
 				</Form.Group>
