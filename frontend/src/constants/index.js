@@ -7,7 +7,11 @@ export {
 	PRODUCT_DETAILS_FAIL,
 } from './productConstants';
 
-export { CART_ADD_ITEM, CART_REMOVE_ITEM } from './cartConstants';
+export {
+	CART_ADD_ITEM,
+	CART_REMOVE_ITEM,
+	CART_SAVE_SHIPPING_ADDRESS,
+} from './cartConstants';
 
 export {
 	USER_LOGIN_REQUEST,
@@ -23,5 +27,5 @@ export {
 	USER_UPDATE_PROFILE_REQUEST,
 	USER_UPDATE_PROFILE_SUCCESS,
 	USER_UPDATE_PROFILE_FAIL,
-	USER_UPDATE_PROFILE_RESET
+	USER_UPDATE_PROFILE_RESET,
 } from './userConstants';
