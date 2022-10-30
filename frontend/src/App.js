@@ -8,7 +8,8 @@ import {
 	CartScreen,
 	LoginScreen,
 	RegisterScreen,
-	ProfileScreen
+	ProfileScreen,
+	ShippingScreen
 } from './screens';
 
 const App = () => {
@@ -19,12 +20,13 @@ const App = () => {
 				<Container>
 					<Routes>
 						<Route path="/" exact element={<HomeScreen />} />
+						<Route path="/login" exact element={<LoginScreen />} />
+						<Route path="/register" exact element={<RegisterScreen />} />
 						<Route path="/product/:id" element={<ProductScreen />} />
 						<Route path="/cart/" element={<CartScreen />} />
 						<Route path="/cart/:id" element={<CartScreen />} />
-						<Route path="/login" exact element={<LoginScreen />} />
-						<Route path="/register" exact element={<RegisterScreen />} />
 						<Route path="/profile" exact element={<ProfileScreen />} />
+						<Route path="/shipping" exact element={<ShippingScreen />} />
 					</Routes>
 				</Container>
 			</main>
