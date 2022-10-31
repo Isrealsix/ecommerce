@@ -6,3 +6,4 @@ export {
 	userDetailsReducer,
 	userUpdateProfileReducer,
 } from './userReducers';
+export { orderCreateReducer } from './orderReducers';
