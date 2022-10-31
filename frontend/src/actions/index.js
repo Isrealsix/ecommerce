@@ -12,3 +12,4 @@ export {
 	getUserDetails,
 	updateUserProfile,
 } from './userActions';
+export { createOrder } from './orderActions';
