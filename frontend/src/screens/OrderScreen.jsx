@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader } from '../components';
 import { getOrderDetails } from '../actions';
 
 const OrderScreen = () => {
-	const cart = useSelector(state => state.cart);
 	const dispatch = useDispatch();
-	const location = useLocation();
+	const { orderId } = useParams();
 
-	const { orderId } = location.params;
 	const orderDetails = useSelector(state => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
