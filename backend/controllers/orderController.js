@@ -58,4 +58,4 @@ const getOrderById = asyncHandler(async (req, res) => {
 	}
 });
 
-export { addOrderItems };
+export { addOrderItems, getOrderById };
