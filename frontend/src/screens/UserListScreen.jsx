@@ -8,14 +8,15 @@ import { listUsers } from '../actions';
 
 const UserListScreen = () => {
 	const dispatch = useDispatch();
-	const userList = useSelector(state => state.users);
+	const userList = useSelector(state => state.userList);
 	const { loading, error, users } = userList;
 
 	useEffect(() => {
 		dispatch(listUsers());
 	}, [dispatch]);
 
-	const deleteHandler = (id) => {};
+	const deleteHandler = (id) => { };
+
 	return (
 		<>
 			<h1>Users</h1>
@@ -35,7 +36,7 @@ const UserListScreen = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{users.map(user => (
+						{users?.map(user => (
 							<tr key={user._id}>
 								<td>{user._id}</td>
 								<td>{user.name}</td>

@@ -31,7 +31,7 @@ const ProfileScreen = () => {
 	useEffect(() => {
 		if (!userInfo) navigate('/login');
 		else {
-			if (!user.name) {
+			if (!user?.name) {
 				dispatch(getUserDetails('profile'));
 				dispatch(listMyOrders());
 			} else
@@ -60,6 +60,7 @@ const ProfileScreen = () => {
 		setField(state => ({ ...state, [key]: ev.target.value }));
 	};
 
+	if (!user?.name) return <Loader />;
 	return (
 		<Row>
 			<Col md={3}>
@@ -157,7 +158,9 @@ const ProfileScreen = () => {
 									</td>
 									<td>
 										<LinkContainer to={`/order/${order._id}`}>
-											<Button className='btn-sm' variant="light">Details</Button>
+											<Button className="btn-sm" variant="light">
+												Details
+											</Button>
 										</LinkContainer>
 									</td>
 								</tr>
