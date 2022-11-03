@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -15,7 +15,7 @@ const UserListScreen = () => {
 		dispatch(listUsers());
 	}, [dispatch]);
 
-	const deleteHandler = () => {};
+	const deleteHandler = (id) => {};
 	return (
 		<>
 			<h1>Users</h1>

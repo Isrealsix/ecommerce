@@ -13,6 +13,7 @@ import {
 	PaymentScreen,
 	PlaceOrderScreen,
 	OrderScreen,
+	UserListScreen,
 } from './screens';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
 						<Route path="/payment" exact element={<PaymentScreen />} />
 						<Route path="/placeorder" exact element={<PlaceOrderScreen />} />
 						<Route path="/order/:orderId" exact element={<OrderScreen />} />
+						<Route path="/admin/userlist" exact element={<UserListScreen />} />
 					</Routes>
 				</Container>
 			</main>
