@@ -45,4 +45,5 @@ export {
 	ORDER_LIST_MY_REQUEST,
 	ORDER_LIST_MY_SUCCESS,
 	ORDER_LIST_MY_FAIL,
+	ORDER_LIST_MY_RESET,
 } from './orderConstants';
