@@ -173,15 +173,17 @@ const OrderScreen = () => {
 								</Row>
 							</ListGroup.Item>
 							{!order.isPaid && (
-								<ListGroup.Item>{loadingPay && <Loader />}</ListGroup.Item>
-							)}
-							{!sdkReady ? (
-								<Loader />
-							) : (
-								<PayPalButton
-									amount={order.totalPrice}
-									onSuccess={successPaymentHandler}
-								/>
+								<ListGroup.Item>
+									{loadingPay && <Loader />}
+									{!sdkReady ? (
+										<Loader />
+									) : (
+										<PayPalButton
+											amount={order.totalPrice}
+											onSuccess={successPaymentHandler}
+										/>
+									)}
+								</ListGroup.Item>
 							)}
 						</ListGroup>
 					</Card>
