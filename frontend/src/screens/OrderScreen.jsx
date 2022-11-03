@@ -42,10 +42,15 @@ const OrderScreen = () => {
 			document.body.appendChild(script);
 		};
 
-		addPayPalScript();
 
 		if (!order || successPay || order._id !== orderId) {
 			dispatch(getOrderDetails(orderId));
+		} else if (!order.isPaid) {
+			if (!window.paypal) {
+				addPayPalScript()
+			} else {
+				setSdkReady(true)
+			}
 		}
 	}, [dispatch, order, orderId, successPay]);
 
