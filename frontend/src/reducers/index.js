@@ -5,6 +5,7 @@ export {
 	userRegisterReducer,
 	userDetailsReducer,
 	userUpdateProfileReducer,
+	userListReducer,
 } from './userReducers';
 export {
 	orderCreateReducer,

@@ -11,6 +11,7 @@ export {
 	register,
 	getUserDetails,
 	updateUserProfile,
+	listUsers,
 } from './userActions';
 export {
 	createOrder,
