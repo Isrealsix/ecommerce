@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { PayPalButton } from 'react-paypal-button-v2';
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Message, Loader } from '../components';
 import { getOrderDetails } from '../actions';
@@ -42,18 +43,21 @@ const OrderScreen = () => {
 			document.body.appendChild(script);
 		};
 
-
 		if (!order || successPay || order._id !== orderId) {
 			dispatch(getOrderDetails(orderId));
 		} else if (!order.isPaid) {
 			if (!window.paypal) {
-				addPayPalScript()
+				addPayPalScript();
 			} else {
-				setSdkReady(true)
+				setSdkReady(true);
 			}
 		}
 	}, [dispatch, order, orderId, successPay]);
 
+
+	const successPaymentHandler = () => {
+		
+	}
 	return loading ? (
 		<Loader />
 	) : error ? (
@@ -166,6 +170,17 @@ const OrderScreen = () => {
 									<Col>${order.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
+							{!order.isPaid && (
+								<ListGroup.Item>{loadingPay && <Loader />}</ListGroup.Item>
+							)}
+							{!sdkReady ? (
+								<Loader />
+							) : (
+								<PayPalButton
+									amount={order.totalPrice}
+									onSuccess={successPaymentHandler}
+								/>
+							)}
 						</ListGroup>
 					</Card>
 				</Col>
