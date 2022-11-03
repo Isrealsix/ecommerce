@@ -15,6 +15,9 @@ const OrderScreen = () => {
 	const orderDetails = useSelector(state => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
+	const orderPay = useSelector(state => state.orderPay);
+	const { loading: loadingPay, success: successPay } = orderPay;
+
 	if (!loading) {
 		const addDecimals = num => {
 			return (Math.round(num * 100) / 100).toFixed(2);
@@ -41,10 +44,10 @@ const OrderScreen = () => {
 
 		addPayPalScript();
 
-		if (!order || order._id !== orderId) {
+		if (!order || successPay || order._id !== orderId) {
 			dispatch(getOrderDetails(orderId));
 		}
-	}, [dispatch, order, orderId]);
+	}, [dispatch, order, orderId, successPay]);
 
 	return loading ? (
 		<Loader />
