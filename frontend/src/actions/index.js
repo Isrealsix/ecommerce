@@ -12,4 +12,4 @@ export {
 	getUserDetails,
 	updateUserProfile,
 } from './userActions';
-export { createOrder, getOrderDetails } from './orderActions';
+export { createOrder, getOrderDetails, payOrder } from './orderActions';

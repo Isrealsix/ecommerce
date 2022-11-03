@@ -5,7 +5,8 @@ import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Message, Loader } from '../components';
-import { getOrderDetails } from '../actions';
+import { getOrderDetails, payOrder } from '../actions';
+import { ORDER_PAY_RESET } from '../constants';
 
 const OrderScreen = () => {
 	const dispatch = useDispatch();
@@ -44,6 +45,7 @@ const OrderScreen = () => {
 		};
 
 		if (!order || successPay || order._id !== orderId) {
+			dispatch({ type: ORDER_PAY_RESET });
 			dispatch(getOrderDetails(orderId));
 		} else if (!order.isPaid) {
 			if (!window.paypal) {
@@ -54,10 +56,10 @@ const OrderScreen = () => {
 		}
 	}, [dispatch, order, orderId, successPay]);
 
-
-	const successPaymentHandler = () => {
-		
-	}
+	const successPaymentHandler = paymentResult => {
+		console.log(paymentResult);
+		dispatch(payOrder(orderId, paymentResult));
+	};
 	return loading ? (
 		<Loader />
 	) : error ? (
