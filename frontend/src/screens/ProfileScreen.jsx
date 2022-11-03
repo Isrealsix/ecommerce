@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader } from '../components';
-import { getUserDetails, updateUserProfile } from '../actions';
+import { getUserDetails, updateUserProfile, listMyOrders } from '../actions';
 
 const ProfileScreen = () => {
 	const [field, setField] = useState({
@@ -15,20 +15,25 @@ const ProfileScreen = () => {
 	});
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const userDetails = useSelector(state => state.userDetails);
 	const userLogin = useSelector(state => state.userLogin);
-	const navigate = useNavigate();
 	const { loading, error, user } = userDetails;
 	const { userInfo } = userLogin;
 
 	const userUpdateProfile = useSelector(state => state.userUpdateProfile);
 	const { success } = userUpdateProfile;
 
+	const orderListMy = useSelector(state => state.orderListMy);
+	const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
 	useEffect(() => {
 		if (!userInfo) navigate('/login');
 		else {
-			if (!user.name) dispatch(getUserDetails('profile'));
-			else
+			if (!user.name) {
+				dispatch(getUserDetails('profile'));
+				dispatch(listMyOrders())
+			} else
 				setField(state => ({ ...state, name: user.name, email: user.email }));
 		}
 	}, [navigate, userInfo, dispatch, user]);
@@ -38,12 +43,14 @@ const ProfileScreen = () => {
 		if (field.password !== field.confirmPassword) {
 			setField(state => ({ ...state, message: 'Passwords do not match' }));
 		} else {
-			dispatch((updateUserProfile({
-				id: user._id,
-				name: field.name,
-				email: field.email,
-				password: field.password,
-			})))
+			dispatch(
+				updateUserProfile({
+					id: user._id,
+					name: field.name,
+					email: field.email,
+					password: field.password,
+				})
+			);
 		}
 	};
 
