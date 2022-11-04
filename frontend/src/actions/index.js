@@ -12,6 +12,7 @@ export {
 	getUserDetails,
 	updateUserProfile,
 	listUsers,
+	deleteUser,
 } from './userActions';
 export {
 	createOrder,
