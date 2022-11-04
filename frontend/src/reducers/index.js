@@ -6,7 +6,8 @@ export {
 	userDetailsReducer,
 	userUpdateProfileReducer,
 	userListReducer,
-	userDeleteReducer
+	userDeleteReducer,
+	userUpdateReducer
 } from './userReducers';
 export {
 	orderCreateReducer,
