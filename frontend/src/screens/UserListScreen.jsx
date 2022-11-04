@@ -15,8 +15,7 @@ const UserListScreen = () => {
 	const userLogin = useSelector(state => state.userLogin);
 
 	const userDelete = useSelector(state => state.userDelete);
-	const { success: successDelete } = userDelete
-
+	const { success: successDelete } = userDelete;
 
 	const { userInfo } = userLogin;
 	useEffect(() => {
@@ -28,7 +27,9 @@ const UserListScreen = () => {
 	}, [dispatch, navigate, userInfo, successDelete]);
 
 	const deleteHandler = id => {
-		dispatch(deleteUser(id))
+		if (window.confirm('Are you sure?')) {
+			dispatch(deleteUser(id));
+		}
 	};
 
 	return (
