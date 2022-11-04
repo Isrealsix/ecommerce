@@ -32,7 +32,7 @@ const UserEditScreen = () => {
 			dispatch({ type: USER_UPDATE_RESET });
 			navigate('/admin/userlist');
 		} else {
-			if (!user.name || user._id !== userId) {
+			if (!user?.name || user?._id !== userId) {
 				dispatch(getUserDetails(userId));
 			} else {
 				setField(prev => ({
