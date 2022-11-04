@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader, FormContainer } from '../components';
-import { getUserDetails } from '../actions';
-import { Link } from 'react-router-dom';
+import { getUserDetails, updateUser } from '../actions';
+import { USER_UPDATE_RESET } from '../constants';
 
 const UserEditScreen = () => {
 	const [field, setField] = useState({
@@ -15,24 +15,38 @@ const UserEditScreen = () => {
 
 	const dispatch = useDispatch();
 	const params = useParams();
+	const navigate = useNavigate();
 	const userId = params.id;
 	const userDetails = useSelector(state => state.userDetails);
 	const { loading, error, user } = userDetails;
 
+	const userUpdate = useSelector(state => state.userUpdate);
+	const {
+		loading: loadingUpdate,
+		error: errorUpdate,
+		success: successUpdate,
+	} = userUpdate;
+
 	useEffect(() => {
-		if (!user.name || user._id !== userId) {
-			dispatch(getUserDetails(userId));
+		if (successUpdate) {
+			dispatch({ type: USER_UPDATE_RESET });
+			navigate('/admin/userlist');
 		} else {
-			setField(prev => ({
-				name: user.name,
-				email: user.email,
-				isAdmin: user.isAdmin,
-			}));
+			if (!user.name || user._id !== userId) {
+				dispatch(getUserDetails(userId));
+			} else {
+				setField(prev => ({
+					name: user.name,
+					email: user.email,
+					isAdmin: user.isAdmin,
+				}));
+			}
 		}
-	}, [dispatch, userId, user]);
+	}, [dispatch, userId, user, successUpdate, navigate]);
 
 	const submitHandler = ev => {
 		ev.preventDefault();
+		dispatch(updateUser({ ...field, _id: userId }));
 	};
 
 	const onUpdateField = ev => {
@@ -49,7 +63,8 @@ const UserEditScreen = () => {
 			</Link>
 			<FormContainer>
 				<h1>Edit User</h1>
-
+				{loadingUpdate && <Loader />}
+				{errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 				{loading ? (
 					<Loader />
 				) : error ? (
