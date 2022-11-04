@@ -119,7 +119,6 @@ const getUsers = asyncHandler(async (req, res) => {
 	res.json(users);
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers };
 
 /**
  * @desc  Delete user
@@ -142,5 +141,5 @@ export {
 	registerUser,
 	updateUserProfile,
 	getUsers,
-	deleteUser,
+	deleteUser, 
 };
