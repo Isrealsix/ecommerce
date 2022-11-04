@@ -149,18 +149,17 @@ const getUserById = asyncHandler(async (req, res) => {
 	}
 });
 
-
 /**
  * @desc  Update user
  * @route PUT /api/users/:id
  * @access Private/Admin
  */
- const updateUser = asyncHandler(async (req, res) => {
+const updateUser = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.params.id);
 	if (user) {
 		user.name = req.body.name || user.name;
 		user.email = req.body.email || user.email;
-		user.isAdmin = req.body.isAdmin
+		user.isAdmin = req.body.isAdmin ?? user.isAdmin;
 
 		const updatedUser = await user.save();
 
@@ -184,5 +183,5 @@ export {
 	getUsers,
 	deleteUser,
 	getUserById,
-	updateUser
+	updateUser,
 };
