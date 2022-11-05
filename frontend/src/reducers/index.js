@@ -20,4 +20,5 @@ export {
 	orderDetailsReducer,
 	orderPayReducer,
 	orderListMyReducer,
+	orderListReducer,
 } from './orderReducers';
