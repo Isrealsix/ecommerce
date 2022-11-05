@@ -2,6 +2,7 @@ export {
 	listProducts,
 	listProductDetails,
 	deleteProduct,
+	createProduct,
 } from './productActions';
 export {
 	addToCart,
