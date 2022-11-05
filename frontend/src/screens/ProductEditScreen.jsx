@@ -3,7 +3,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Message, Loader, FormContainer } from '../components';
-import { listProductDetails } from '../actions';
+import { listProductDetails, updateProduct } from '../actions';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 const ProductEditScreen = () => {
 	const [field, setField] = useState({
@@ -23,24 +24,37 @@ const ProductEditScreen = () => {
 	const productDetails = useSelector(state => state.productDetails);
 	const { loading, error, product } = productDetails;
 
+	const productUpdate = useSelector(state => state.productUpdate);
+	const {
+		loading: loadingUpdate,
+		error: errorUpdate,
+		success: successUpdate,
+	} = productUpdate;
+
 	useEffect(() => {
-		if (!product?.name || product?._id !== productId) {
-			dispatch(listProductDetails(productId));
+		if (successUpdate) {
+			dispatch({ type: PRODUCT_UPDATE_RESET });
+			navigate('/admin/productlist');
 		} else {
-			setField(prev => ({
-				name: product.name,
-				price: product.price,
-				image: product.image,
-				brand: product.brand,
-				category: product.category,
-				countInStock: product.countInStock,
-				description: product.description,
-			}));
+			if (!product?.name || product?._id !== productId) {
+				dispatch(listProductDetails(productId));
+			} else {
+				setField(prev => ({
+					name: product.name,
+					price: product.price,
+					image: product.image,
+					brand: product.brand,
+					category: product.category,
+					countInStock: product.countInStock,
+					description: product.description,
+				}));
+			}
 		}
-	}, [dispatch, productId, product, navigate]);
+	}, [dispatch, productId, product, navigate, successUpdate]);
 
 	const submitHandler = ev => {
 		ev.preventDefault();
+		dispatch(updateProduct({ ...field, _id: productId }));
 	};
 
 	const onUpdateField = ev => {
@@ -57,6 +71,8 @@ const ProductEditScreen = () => {
 			</Link>
 			<FormContainer>
 				<h1>Edit Product</h1>
+				{loadingUpdate && <Loader />}
+				{errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
 				{loading ? (
 					<Loader />
 				) : error ? (
@@ -135,7 +151,7 @@ const ProductEditScreen = () => {
 								type="text"
 								data-key="description"
 								placeholder="Enter description"
-								value={field.description ?? ''}
+								value={field.description || ''}
 								onChange={onUpdateField}
 							></Form.Control>
 						</Form.Group>

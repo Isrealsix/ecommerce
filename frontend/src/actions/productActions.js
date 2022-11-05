@@ -149,6 +149,7 @@ export const updateProduct = product => async (dispatch, getState) => {
 			type: PRODUCT_UPDATE_SUCCESS,
 			payload: data,
 		});
+		console.log(data);
 	} catch (error) {
 		dispatch({
 			type: PRODUCT_UPDATE_FAIL,
