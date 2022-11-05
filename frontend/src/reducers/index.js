@@ -1,4 +1,8 @@
-export { productListReducer, productDetailsReducer } from './productReducers';
+export {
+	productListReducer,
+	productDetailsReducer,
+	productDeleteReducer,
+} from './productReducers';
 export { cartReducer } from './cartReducers';
 export {
 	userLoginReducer,
@@ -7,7 +11,7 @@ export {
 	userUpdateProfileReducer,
 	userListReducer,
 	userDeleteReducer,
-	userUpdateReducer
+	userUpdateReducer,
 } from './userReducers';
 export {
 	orderCreateReducer,
