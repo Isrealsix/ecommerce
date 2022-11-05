@@ -2,6 +2,7 @@ export {
 	productListReducer,
 	productDetailsReducer,
 	productDeleteReducer,
+	productCreateReducer,
 } from './productReducers';
 export { cartReducer } from './cartReducers';
 export {
