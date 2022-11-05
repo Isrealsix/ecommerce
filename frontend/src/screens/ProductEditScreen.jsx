@@ -116,10 +116,9 @@ const ProductEditScreen = () => {
 								value={field.countInStock}
 								onChange={onUpdateField}
 							></Form.Control>
-								</Form.Group>
-								
+						</Form.Group>
 
-								<Form.Group controlId="category">
+						<Form.Group controlId="category">
 							<Form.Label>Category</Form.Label>
 							<Form.Control
 								type="text"
@@ -128,16 +127,15 @@ const ProductEditScreen = () => {
 								value={field.category}
 								onChange={onUpdateField}
 							></Form.Control>
-								</Form.Group>
-								
+						</Form.Group>
 
-								<Form.Group controlId="description">
+						<Form.Group controlId="description">
 							<Form.Label>Description</Form.Label>
 							<Form.Control
 								type="text"
 								data-key="description"
 								placeholder="Enter description"
-								value={field.description}
+								value={field.description ?? ''}
 								onChange={onUpdateField}
 							></Form.Control>
 						</Form.Group>
