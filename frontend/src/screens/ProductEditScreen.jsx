@@ -52,6 +52,10 @@ const ProductEditScreen = () => {
 		}
 	}, [dispatch, productId, product, navigate, successUpdate]);
 
+	useEffect(() => {
+		dispatch(listProductDetails(productId));
+	}, [productId, dispatch]);
+
 	const submitHandler = ev => {
 		ev.preventDefault();
 		dispatch(updateProduct({ ...field, _id: productId }));
@@ -151,7 +155,7 @@ const ProductEditScreen = () => {
 								type="text"
 								data-key="description"
 								placeholder="Enter description"
-								value={field.description || ''}
+								value={field.description}
 								onChange={onUpdateField}
 							></Form.Control>
 						</Form.Group>
