@@ -29,9 +29,7 @@ const ProductListScreen = () => {
 		}
 	};
 
-	const createProductHandler = () => {
-		
-	}
+	const createProductHandler = product => {};
 
 	return (
 		<>
