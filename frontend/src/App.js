@@ -60,11 +60,13 @@ const App = () => {
 							element={<UserEditScreen />}
 						/>
 
+						<Route path="/search/:keyword" exact element={<HomeScreen />} />
 						<Route
-							path="/search/:keyword"
+							path="/search/:keyword/page/:pageNumber"
 							exact
 							element={<HomeScreen />}
 						/>
+						<Route path="/page/:pageNumber" exact element={<HomeScreen />} />
 					</Routes>
 				</Container>
 			</main>
