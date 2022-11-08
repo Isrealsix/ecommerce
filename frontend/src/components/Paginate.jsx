@@ -12,7 +12,7 @@ const Paginate = ({ pages, page, isAdmin = false, keyworld = '' }) => {
 							keyworld ? `/search/${keyworld}/page/${x + 1}` : `/page/${x + 1}`
 						}
 					>
-						<Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
+						<Pagination.Item>{x + 1}</Pagination.Item>
 					</LinkContainer>
 				))}
 			</Pagination>
