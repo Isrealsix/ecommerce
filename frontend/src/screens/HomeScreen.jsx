@@ -7,16 +7,17 @@ import { listProducts } from '../actions';
 
 const HomeScreen = () => {
 	const params = useParams();
-	const keyword = params.keyword
 	const dispatch = useDispatch();
+	const keyword = params.keyword;
+	const pageNumber = params.pageNumber || 1;
 	const productList = useSelector(state => state.productList);
 	const { loading, error, products } = productList;
 
 	useEffect(() => {
-		dispatch(listProducts(keyword));
-	}, [dispatch, keyword]);
+		dispatch(listProducts(keyword, pageNumber));
+	}, [dispatch, keyword, pageNumber]);
 
-	console.log(params, 'of paramsss')
+	console.log(params, 'of paramsss');
 
 	return (
 		<React.Fragment>
