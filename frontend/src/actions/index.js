@@ -3,7 +3,8 @@ export {
 	listProductDetails,
 	deleteProduct,
 	createProduct,
-	updateProduct
+	updateProduct,
+	createProductReview,
 } from './productActions';
 export {
 	addToCart,
@@ -27,5 +28,5 @@ export {
 	payOrder,
 	listMyOrders,
 	listOrders,
-	deliverOrder
+	deliverOrder,
 } from './orderActions';
