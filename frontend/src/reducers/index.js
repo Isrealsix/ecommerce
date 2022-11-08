@@ -4,6 +4,7 @@ export {
 	productDeleteReducer,
 	productCreateReducer,
 	productUpdateReducer,
+	productReviewCreateReducer,
 } from './productReducers';
 export { cartReducer } from './cartReducers';
 export {
@@ -21,5 +22,5 @@ export {
 	orderPayReducer,
 	orderListMyReducer,
 	orderListReducer,
-	orderDeliverReducer
+	orderDeliverReducer,
 } from './orderReducers';
