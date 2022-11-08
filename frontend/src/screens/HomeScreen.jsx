@@ -1,17 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import { Products, Message, Loader } from '../components';
 import { listProducts } from '../actions';
 
 const HomeScreen = () => {
+	const params = useParams();
+	const keyword = params.keyword
 	const dispatch = useDispatch();
 	const productList = useSelector(state => state.productList);
 	const { loading, error, products } = productList;
 
 	useEffect(() => {
-		dispatch(listProducts());
-	}, [dispatch]);
+		dispatch(listProducts(keyword));
+	}, [dispatch, keyword]);
+
+	console.log(params, 'of paramsss')
 
 	return (
 		<React.Fragment>
@@ -19,7 +24,7 @@ const HomeScreen = () => {
 			{loading ? (
 				<Loader />
 			) : error ? (
-				<Message variant='danger'>{error}</Message>
+				<Message variant="danger">{error}</Message>
 			) : (
 				<Row>
 					{products.map(product => (
