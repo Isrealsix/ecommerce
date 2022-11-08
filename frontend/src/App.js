@@ -40,6 +40,11 @@ const App = () => {
 						<Route path="/order/:orderId" exact element={<OrderScreen />} />
 						<Route path="/admin/userlist" exact element={<UserListScreen />} />
 						<Route
+							path="/admin/productlist/:pageNumber"
+							exact
+							element={<ProductListScreen />}
+						/>
+						<Route
 							path="/admin/productlist"
 							exact
 							element={<ProductListScreen />}
