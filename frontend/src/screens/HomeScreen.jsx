@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
-import { Products, Message, Loader, Paginate } from '../components';
+import {
+	Products,
+	Message,
+	Loader,
+	Paginate,
+	ProductCarousel,
+} from '../components';
 import { listProducts } from '../actions';
 
 const HomeScreen = () => {
@@ -21,6 +27,7 @@ const HomeScreen = () => {
 
 	return (
 		<React.Fragment>
+			{!keyword && <ProductCarousel />}
 			<h1>Latest Products</h1>
 			{loading ? (
 				<Loader />
