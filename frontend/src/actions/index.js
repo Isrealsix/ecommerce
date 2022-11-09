@@ -1,10 +1,11 @@
 export {
+	createProduct,
+	createProductReview,
 	listProducts,
 	listProductDetails,
-	deleteProduct,
-	createProduct,
+	listTopProducts,
 	updateProduct,
-	createProductReview,
+	deleteProduct,
 } from './productActions';
 export {
 	addToCart,
