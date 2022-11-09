@@ -11,7 +11,7 @@ import {
 	Form,
 } from 'react-bootstrap';
 import { listProductDetails, createProductReview } from '../actions';
-import { Loader, Message, Rating } from '../components';
+import { Loader, Message, Meta, Rating } from '../components';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants';
 
 const ProductScreen = () => {
@@ -63,6 +63,7 @@ const ProductScreen = () => {
 				<Message variant="danger">{error}</Message>
 			) : (
 				<>
+					<Meta title={product.name} />
 					<Row>
 						<Col md={6}>
 							<Image src={product.image} alt={product.name} fluid />

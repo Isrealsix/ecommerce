@@ -8,6 +8,7 @@ import {
 	Loader,
 	Paginate,
 	ProductCarousel,
+	Meta,
 } from '../components';
 import { listProducts } from '../actions';
 
@@ -27,6 +28,7 @@ const HomeScreen = () => {
 
 	return (
 		<React.Fragment>
+			<Meta />
 			{!keyword && <ProductCarousel />}
 			<h1>Latest Products</h1>
 			{loading ? (
