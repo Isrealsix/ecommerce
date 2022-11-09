@@ -5,6 +5,7 @@ export {
 	productCreateReducer,
 	productUpdateReducer,
 	productReviewCreateReducer,
+	productTopRatedReducer
 } from './productReducers';
 export { cartReducer } from './cartReducers';
 export {
